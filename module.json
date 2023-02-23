@@ -1,0 +1,23 @@
+{
+    "code": "corals-trouble-ticket",
+    "name": "Support Ticket Manager",
+    "author": "Corals",
+    "type": "module",
+    "description": "Support Ticket",
+    "namespace": "Corals\\Modules\\TroubleTicket\\",
+    "provider": "TroubleTicketServiceProvider",
+    "version": "2.0",
+    "load_order": "0",
+    "folder": "TroubleTicket",
+    "autoload": "psr-4",
+    "icon": "fa fa-ticket",
+    "require": {
+        "corals-foundation": "^6.0",
+        "corals-settings": "^5.0",
+        "corals-utility": "^4.0",
+        "corals-cms": "^5.0",
+        "corals-utility-comment": "1.0",
+        "corals-utility-category": "1.0",
+        "corals-utility-listOfValue": "1.0"
+    }
+}
