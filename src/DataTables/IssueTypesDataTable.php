@@ -48,12 +48,12 @@ class IssueTypesDataTable extends BaseDataTable
             'team' => [
                 'title' => trans('TroubleTicket::attributes.issue_type.team'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'categories' => [
                 'title' => trans('TroubleTicket::attributes.issue_type.categories'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'updated_at' => ['title' => trans('Corals::attributes.updated_at')],
         ];

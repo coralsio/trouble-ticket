@@ -6,8 +6,8 @@ use Corals\Modules\TroubleTicket\Models\IssueType;
 use Corals\Modules\TroubleTicket\Models\Team;
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
 use Corals\Modules\TroubleTicket\Policies\IssueTypePolicy;
-use Corals\Modules\TroubleTicket\Policies\TroubleTicketPolicy;
 use Corals\Modules\TroubleTicket\Policies\TeamPolicy;
+use Corals\Modules\TroubleTicket\Policies\TroubleTicketPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class TroubleTicketAuthServiceProvider extends ServiceProvider
@@ -20,7 +20,7 @@ class TroubleTicketAuthServiceProvider extends ServiceProvider
     protected $policies = [
         TroubleTicket::class => TroubleTicketPolicy::class,
         Team::class => TeamPolicy::class,
-        IssueType::class => IssueTypePolicy::class
+        IssueType::class => IssueTypePolicy::class,
     ];
 
     /**

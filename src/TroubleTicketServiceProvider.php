@@ -36,7 +36,6 @@ class TroubleTicketServiceProvider extends BasePackageServiceProvider
      *
      * @return void
      */
-
     public function bootPackage()
     {
         // Load view
@@ -86,7 +85,7 @@ class TroubleTicketServiceProvider extends BasePackageServiceProvider
             'TroubleTicket' => TroubleTicket::class,
             'Assignment' => Assignment::class,
             'Team' => Team::class,
-            'IssueType' => IssueType::class
+            'IssueType' => IssueType::class,
         ]);
     }
 

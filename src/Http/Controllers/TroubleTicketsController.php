@@ -52,7 +52,7 @@ class TroubleTicketsController extends BaseController
         $troubleTicket = new TroubleTicket();
 
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular])
+            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular]),
         ]);
 
         return view('TroubleTicket::troubleTickets.create_edit')->with(compact('troubleTicket'));
@@ -89,7 +89,7 @@ class TroubleTicketsController extends BaseController
     {
         $this->setViewSharedData([
             'title_singular' => $this->title_singular . " [$troubleTicket->code]",
-            'showModel' => $troubleTicket
+            'showModel' => $troubleTicket,
         ]);
 
         $ttSignedURL = URL::signedRoute('publicTroubleTicket', ['trouble_ticket' => $troubleTicket->hashed_id]);
@@ -105,7 +105,7 @@ class TroubleTicketsController extends BaseController
     public function edit(TroubleTicketRequest $request, TroubleTicket $troubleTicket)
     {
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.update_title', ['title' => $troubleTicket->code])
+            'title_singular' => trans('Corals::labels.update_title', ['title' => $troubleTicket->code]),
         ]);
 
         return view('TroubleTicket::troubleTickets.create_edit')->with(compact('troubleTicket'));
@@ -137,7 +137,6 @@ class TroubleTicketsController extends BaseController
      * @param TroubleTicket $troubleTicket
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function bulkAction(BulkRequest $request)
     {
         try {
@@ -154,29 +153,32 @@ class TroubleTicketsController extends BaseController
             switch ($action) {
                 case 'update_status':
                     $troubleTickets->update(['status' => $request->input('status')]);
+
                     break;
                 case 'delete':
                     $troubleTickets->delete();
                     $message = [
                         'level' => 'success',
-                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title])
+                        'message' => trans('Corals::messages.success.deleted', ['item' => $this->title]),
                     ];
+
                     break;
                 case 'archive':
                     $troubleTickets->update(['archived' => true]);
+
                     break;
                 case 'unarchive':
                     $troubleTickets->update(['archived' => false]);
+
                     break;
             }
 
-            if (!isset($message)) {
+            if (! isset($message)) {
                 $message = [
                     'level' => 'success',
-                    'message' => trans('Corals::messages.success.updated', ['item' => $this->title])
+                    'message' => trans('Corals::messages.success.updated', ['item' => $this->title]),
                 ];
             }
-
         } catch (\Exception $exception) {
             log_exception($exception, TroubleTicketsController::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];
@@ -192,7 +194,7 @@ class TroubleTicketsController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, TroubleTicketsController::class, 'destroy');
@@ -210,7 +212,7 @@ class TroubleTicketsController extends BaseController
      */
     public function updateStatusModal(Request $request, TroubleTicket $troubleTicket = null)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         $this->authorize('update', TroubleTicket::class);
 
@@ -236,8 +238,10 @@ class TroubleTicketsController extends BaseController
     public function partialUpdate(Request $request, TroubleTicket $troubleTicket)
     {
         try {
-            $request->request->add(Arr::except($troubleTicket->attributesToArray(),
-                ['status', 'priority', 'category_id', 'issue_type_id', 'assignee_id']));
+            $request->request->add(Arr::except(
+                $troubleTicket->attributesToArray(),
+                ['status', 'priority', 'category_id', 'issue_type_id', 'assignee_id']
+            ));
 
             $this->troubleTicketService->update($request, $troubleTicket);
 
@@ -265,6 +269,7 @@ class TroubleTicketsController extends BaseController
     public function doUpdateStatus(Request $request, TroubleTicket $troubleTicket)
     {
         $this->authorize('update', $troubleTicket);
+
         try {
             $oldStatus = $troubleTicket->present('status');
             $newStatus = $request->get('status');
@@ -278,20 +283,20 @@ class TroubleTicketsController extends BaseController
                 $troubleTicket->logActivity(trans('TroubleTicket::activities.tt_update_status', [
                     'code' => $troubleTicket->code,
                     'old' => $oldStatus,
-                    'new' => $troubleTicket->present('status')
+                    'new' => $troubleTicket->present('status'),
                 ]));
             }
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.updated', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.updated', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, TroubleTicket::class, 'update');
 
             $message = [
                 'level' => 'success',
-                'message' => $exception->getMessage()
+                'message' => $exception->getMessage(),
             ];
 
             $code = 200;
@@ -319,6 +324,7 @@ class TroubleTicketsController extends BaseController
                         'code' => $troubleTicket->code,
                         'causer' => $causer->getIdentifier(),
                     ]));
+
                     break;
                 case 'resolve':
                     $troubleTicket->update(['status' => 'resolved', 'closed_at' => now()]);
@@ -326,10 +332,13 @@ class TroubleTicketsController extends BaseController
                         'code' => $troubleTicket->code,
                         'causer' => $causer->getIdentifier(),
                     ]));
+
                     break;
                 default:
-                    throw new \Exception(trans('TroubleTicket::exceptions.trouble_ticket.invalid_status',
-                        ['status' => $status]));
+                    throw new \Exception(trans(
+                        'TroubleTicket::exceptions.trouble_ticket.invalid_status',
+                        ['status' => $status]
+                    ));
             }
 
             $message = [
@@ -341,7 +350,7 @@ class TroubleTicketsController extends BaseController
             $message = ['level' => 'success', 'message' => $exception->getMessage()];
             $code = 400;
         }
-        return response()->json($message, $code ?? 200);
 
+        return response()->json($message, $code ?? 200);
     }
 }

@@ -6,7 +6,6 @@ use Corals\Foundation\Contracts\CoralsScope;
 
 class ReservationsScope implements CoralsScope
 {
-
     public function apply($builder, $extras = [])
     {
         if (user() && user()->hasPermissionTo('Administrations::admin.reservation')) {

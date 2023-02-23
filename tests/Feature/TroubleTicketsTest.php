@@ -44,8 +44,8 @@ class TroubleTicketsTest extends TestCase
                 'category_id' => $category,
                 'issue_type_id' => $issueType,
                 'owner_id' => $owner,
-                'assignee_id'=>1,
-                'description' => 'trouble-ticket'
+                'assignee_id' => 1,
+                'description' => 'trouble-ticket',
             ]
         );
 

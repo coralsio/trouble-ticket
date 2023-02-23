@@ -14,12 +14,13 @@ class TeamService extends BaseServiceClass
         $this->model->users()->delete();
 
         foreach ($request->get('users', []) as $userId) {
-
-            if (!$userId) continue;
+            if (! $userId) {
+                continue;
+            }
 
             $userAssigneeRecords[] = [
                 'assignee_id' => $userId,
-                'assignee_type' => getModelMorphMap(User::class)
+                'assignee_type' => getModelMorphMap(User::class),
             ];
         }
 
@@ -27,6 +28,5 @@ class TeamService extends BaseServiceClass
         if (isset($userAssigneeRecords)) {
             $this->model->users()->createMany($userAssigneeRecords);
         }
-
     }
 }

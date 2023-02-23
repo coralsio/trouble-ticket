@@ -30,16 +30,16 @@ return [
                         'replace' => [
                             "return url(config('trouble_ticket.models.troubleTicket.resource_url'));",
                             'return $object->hashed_id;',
-                        ]
+                        ],
                     ],
                     'policies' => ['partialUpdate'],
                     'label_pattern' => [
                         'pattern' => '[arg]',
-                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.update_status");']
+                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.update_status");'],
                     ],
                     'data' => [
                         'action' => 'modal-load',
-                    ]
+                    ],
                 ],
                 'reOpen' => [
                     'class' => 'btn btn-danger btn-sm',
@@ -47,17 +47,17 @@ return [
                         'pattern' => '[arg]/reopen',
                         'replace' => [
                             'return $object->getShowURL();',
-                        ]
+                        ],
                     ],
                     'policies' => ['reOpen'],
                     'label_pattern' => [
                         'pattern' => '[arg]',
-                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.re_open");']
+                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.re_open");'],
                     ],
                     'data' => [
                         'action' => 'post',
-                        'table' => '#TroubleTicketsDataTable'
-                    ]
+                        'table' => '#TroubleTicketsDataTable',
+                    ],
                 ],
                 'resolve' => [
                     'class' => 'btn btn-success btn-sm',
@@ -65,17 +65,17 @@ return [
                         'pattern' => '[arg]/resolve',
                         'replace' => [
                             'return $object->getShowURL();',
-                        ]
+                        ],
                     ],
                     'policies' => ['resolve'],
                     'label_pattern' => [
                         'pattern' => '[arg]',
-                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.resolve");']
+                        'replace' => ['return trans("TroubleTicket::labels.trouble_ticket.resolve");'],
                     ],
                     'data' => [
                         'action' => 'post',
-                        'table' => '#TroubleTicketsDataTable'
-                    ]
+                        'table' => '#TroubleTicketsDataTable',
+                    ],
                 ],
             ],
             'model_field_models' => [
@@ -84,70 +84,70 @@ return [
                     'public' => false,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\EcommerceOrdersScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'ecommerce.models.product',
                     'public' => true,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\EcommerceProductsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'marketplace.models.order',
                     'public' => false,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\MarketPlaceOrdersScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'marketplace.models.product',
                     'public' => true,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\MarketPlaceProductsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'payment_common.models.invoice',
                     'public' => false,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\InvoicesScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'payment_common.models.transaction',
                     'public' => false,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\TransactionsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'classified.models.product',
                     'public' => true,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\ClassifiedProductsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'directory.models.listing',
                     'public' => true,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\DirectoryListingsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'reservation.models.reservation',
                     'public' => true,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\ReservationsScope::class,
-                    ]
+                    ],
                 ],
                 [
                     'path' => 'subscriptions.models.subscription',
                     'public' => false,
                     'scopes' => [
                         \Corals\Modules\TroubleTicket\Scopes\SubscriptionsScope::class,
-                    ]
+                    ],
                 ],
             ],
         ],
@@ -158,6 +158,6 @@ return [
         'issue_type' => [
             'presenter' => \Corals\Modules\TroubleTicket\Transformers\IssueTypePresenter::class,
             'resource_url' => 'trouble-ticket/issue-types',
-        ]
-    ]
+        ],
+    ],
 ];

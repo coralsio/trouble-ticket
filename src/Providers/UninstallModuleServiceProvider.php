@@ -9,7 +9,7 @@ use Corals\Modules\TroubleTicket\database\seeds\TroubleTicketDatabaseSeeder;
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {
     protected $migrations = [
-        CreateTroubleTicketsTable::class
+        CreateTroubleTicketsTable::class,
     ];
 
     protected function providerBooted()

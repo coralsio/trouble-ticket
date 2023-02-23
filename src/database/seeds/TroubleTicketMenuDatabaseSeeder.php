@@ -24,7 +24,7 @@ class TroubleTicketMenuDatabaseSeeder extends Seeder
             'icon' => 'fa fa-ticket',
             'target' => null,
             'roles' => '["2"]',
-            'order' => 0
+            'order' => 0,
         ]);
 
         $troubleTicket_menu_id = DB::table('menus')->insertGetId([
@@ -37,7 +37,7 @@ class TroubleTicketMenuDatabaseSeeder extends Seeder
             'icon' => 'fa fa-ticket',
             'target' => null,
             'roles' => '["1"]',
-            'order' => 0
+            'order' => 0,
         ]);
 
 
@@ -52,7 +52,7 @@ class TroubleTicketMenuDatabaseSeeder extends Seeder
                 'icon' => 'fa fa-ticket',
                 'target' => null,
                 'roles' => '["1"]',
-                'order' => 0
+                'order' => 0,
             ],
             [
                 'parent_id' => $troubleTicket_menu_id,
@@ -64,7 +64,7 @@ class TroubleTicketMenuDatabaseSeeder extends Seeder
                 'icon' => 'fa fa-users',
                 'target' => null,
                 'roles' => '["1"]',
-                'order' => 0
+                'order' => 0,
             ],
             [
                 'parent_id' => $troubleTicket_menu_id,
@@ -76,8 +76,8 @@ class TroubleTicketMenuDatabaseSeeder extends Seeder
                 'icon' => 'fa fa-bolt',
                 'target' => null,
                 'roles' => '["1"]',
-                'order' => 0
-            ]
+                'order' => 0,
+            ],
         ]);
     }
 }

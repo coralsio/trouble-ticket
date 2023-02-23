@@ -72,7 +72,7 @@ class TroubleTicketRequest extends BaseRequest
     {
         return [
             'public_owner.email' => 'public owner email',
-            'public_owner.name' => 'public owner email'
+            'public_owner.name' => 'public owner email',
         ];
     }
 }

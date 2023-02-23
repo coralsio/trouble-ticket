@@ -48,7 +48,7 @@ class IssueTypesTest extends TestCase
 
         $this->assertDatabaseHas('tt_ticket_issue_types', [
             'title' => $this->issueType->title,
-            'team_id' => $this->issueType->team_id
+            'team_id' => $this->issueType->team_id,
         ]);
     }
 
@@ -63,7 +63,6 @@ class IssueTypesTest extends TestCase
         }
         $this->assertTrue(true);
     }
-
 
     public function test_issue_types_edit()
     {
@@ -94,7 +93,7 @@ class IssueTypesTest extends TestCase
             $response->assertRedirect('trouble-ticket/issue-types');
             $this->assertDatabaseHas('tt_ticket_issue_types', [
                 'title' => $this->issueType->title,
-                'team_id' => $this->issueType->team_id
+                'team_id' => $this->issueType->team_id,
             ]);
         }
 
@@ -113,7 +112,7 @@ class IssueTypesTest extends TestCase
             $this->isSoftDeletableModel(IssueType::class);
             $this->assertDatabaseMissing('tt_ticket_issue_types', [
                 'title' => $this->issueType->title,
-                'team_id' => $this->issueType->team_id
+                'team_id' => $this->issueType->team_id,
             ]);
         }
         $this->assertTrue(true);

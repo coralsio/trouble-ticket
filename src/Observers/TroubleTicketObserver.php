@@ -6,7 +6,6 @@ use Corals\Modules\TroubleTicket\Models\TroubleTicket;
 
 class TroubleTicketObserver
 {
-
     /**
      * @param TroubleTicket $troubleTicket
      */
@@ -39,7 +38,7 @@ class TroubleTicketObserver
             'owner' => $troubleTicket->owner,
             'new_status' => $newValue,
             'old_status' => $oldValue,
-            'public_owner' => $troubleTicket->public_owner
+            'public_owner' => $troubleTicket->public_owner,
         ]);
     }
 }

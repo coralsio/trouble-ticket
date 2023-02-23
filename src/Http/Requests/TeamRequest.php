@@ -32,7 +32,7 @@ class TeamRequest extends BaseRequest
         if ($this->isUpdate() || $this->isStore()) {
             $rules = array_merge($rules, [
                 'properties.notifications_channels.email' => 'nullable|email',
-                'users' => 'required|min:1'
+                'users' => 'required|min:1',
             ]);
         }
 

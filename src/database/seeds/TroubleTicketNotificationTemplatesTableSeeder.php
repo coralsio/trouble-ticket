@@ -24,7 +24,7 @@ class TroubleTicketNotificationTemplatesTableSeeder extends Seeder
                 'body' => '{"mail": "hi {assignee},<br/> you received this email because you have been assigned to <a href=\"{tt_show_url}\">{tt_code} Support Ticket</a>"}',
                 'extras' => '[]',
                 'via' => '["mail"]',
-            ]
+            ],
         ]);
     }
 }

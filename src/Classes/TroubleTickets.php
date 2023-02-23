@@ -1,15 +1,12 @@
 <?php
 
-
 namespace Corals\Modules\TroubleTicket\Classes;
-
 
 use Corals\Modules\TroubleTicket\Models\IssueType;
 use Corals\Modules\TroubleTicket\Models\Team;
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
 use Corals\User\Models\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class TroubleTickets
 {
@@ -33,7 +30,7 @@ class TroubleTickets
      */
     protected function doAssign(TroubleTicket $troubleTicket, $assignee)
     {
-        if (!$assignee) {
+        if (! $assignee) {
             return;
         }
 
@@ -42,8 +39,10 @@ class TroubleTickets
             'assignee_type' => getMorphAlias($assignee),
         ]);
 
-        $troubleTicket->logActivity(trans('TroubleTicket::activities.tt_assigned',
-            ['assignee' => $assignee->getIdentifier(), 'code' => $troubleTicket->code]));
+        $troubleTicket->logActivity(trans(
+            'TroubleTicket::activities.tt_assigned',
+            ['assignee' => $assignee->getIdentifier(), 'code' => $troubleTicket->code]
+        ));
 
         $this->ttAssignmentNotification($troubleTicket);
     }
@@ -81,14 +80,13 @@ class TroubleTickets
             ->first();
     }
 
-
     /**
      * @param TroubleTicket $troubleTicket
      * @return mixed
      */
     public function getFirstTTAssignee(TroubleTicket $troubleTicket)
     {
-        if (!$troubleTicket->exists) {
+        if (! $troubleTicket->exists) {
             return optional();
         }
 
@@ -97,7 +95,6 @@ class TroubleTickets
         return optional(optional($assignment)->assignee);
     }
 
-
     /**
      * @param TroubleTicket $troubleTicket
      */
@@ -105,7 +102,7 @@ class TroubleTickets
     {
         event('notifications.trouble_tickets.assignment', [
             'assignee' => $this->getFirstTTAssignee($troubleTicket),
-            'trouble_ticket' => $troubleTicket
+            'trouble_ticket' => $troubleTicket,
         ]);
     }
 

@@ -2,32 +2,29 @@
 
 namespace Corals\Modules\TroubleTicket\Notifications;
 
-
 use Corals\User\Communication\Classes\CoralsBaseNotification;
 
 class TTStatusChangedNotification extends CoralsBaseNotification
 {
-
     /**
      * @return mixed
      */
     public function getNotifiables()
     {
         return [
-            $this->data['owner']
+            $this->data['owner'],
         ];
     }
 
     public function getOnDemandNotificationNotifiables()
     {
         return [
-            'mail' => data_get($this->data['public_owner'], 'email')
+            'mail' => data_get($this->data['public_owner'], 'email'),
         ];
     }
 
     public function getNotificationMessageParameters($notifiable, $channel)
     {
-
         $owner = $this->data['owner'];
         $troubleTicket = $this->data['trouble_ticket'];
 
@@ -41,10 +38,9 @@ class TTStatusChangedNotification extends CoralsBaseNotification
             'owner' => $ownerIdentifier,
             'tt_code' => $troubleTicket->code,
             'new_status' => $this->data['new_status'],
-            'old_status' => $this->data['old_status']
+            'old_status' => $this->data['old_status'],
         ];
     }
-
 
     public static function getNotificationMessageParametersDescriptions()
     {
@@ -52,7 +48,7 @@ class TTStatusChangedNotification extends CoralsBaseNotification
             'owner' => 'TT Owner',
             'tt_code' => 'TT code',
             'new_status' => 'New status',
-            'old_status' => 'Old status'
+            'old_status' => 'Old status',
         ];
     }
 }

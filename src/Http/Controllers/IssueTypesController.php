@@ -48,7 +48,7 @@ class IssueTypesController extends BaseController
         $issueType = new IssueType();
 
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular])
+            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular]),
         ]);
 
         return view('TroubleTicket::issue_types.create_edit')->with(compact('issueType'));
@@ -98,7 +98,7 @@ class IssueTypesController extends BaseController
     public function edit(IssueTypeRequest $request, IssueType $issueType)
     {
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.update_title', ['title' => $issueType->title])
+            'title_singular' => trans('Corals::labels.update_title', ['title' => $issueType->title]),
         ]);
 
         return view('TroubleTicket::issue_types.create_edit')->with(compact('issueType'));
@@ -129,7 +129,7 @@ class IssueTypesController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, IssueTypesController::class, 'destroy');
@@ -147,7 +147,7 @@ class IssueTypesController extends BaseController
      */
     public function getSolutionForm(Request $request, IssueType $issueType)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         $index = $request->get('index', 0);
 

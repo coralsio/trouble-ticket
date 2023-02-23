@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::group(['prefix' => 'trouble-ticket'], function () {
     Route::post('public/create', 'PublicTroubleTicketsController@doCreate');
     Route::get('public/create', 'PublicTroubleTicketsController@create');
@@ -36,5 +35,4 @@ Route::group(['prefix' => 'trouble-ticket'], function () {
     Route::resource('trouble-tickets', 'TroubleTicketsController');
     Route::resource('teams', 'TeamsController');
     Route::resource('issue-types', 'IssueTypesController');
-
 });

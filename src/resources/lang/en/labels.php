@@ -15,15 +15,15 @@ return [
         'copy_tt_public_url' => 'Copy Public URL',
         'estimated_hours' => '{1} :hours hour|[2,*] :hours hours',
         'public_url' => 'Copy Support Ticket Public URL',
-        'attachments' => 'Attachments'
+        'attachments' => 'Attachments',
     ],
     'team' => [
-        'notifications_channels' => 'Notification channels'
+        'notifications_channels' => 'Notification channels',
     ],
     'issue_type' => [
         'solutions' => 'Suggested Solutions',
         'add_new_solution' => '<i class="fa fa-plus fa-fw"></i> Add new solution',
-        'remove' => '<i class="fa fa-remove fa-fw"></i> Remove'
+        'remove' => '<i class="fa fa-remove fa-fw"></i> Remove',
     ],
     'comment' => [
         'comments_list' => '<i class="fa fa-comments-o fa-fw"></i> Comments',
@@ -33,6 +33,6 @@ return [
     'history' => [
         'activities' => '<i class="fa fa-history"></i> History',
         'old' => 'Old',
-        'changed_to' => 'Changed to'
+        'changed_to' => 'Changed to',
     ],
 ];

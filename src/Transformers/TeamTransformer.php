@@ -6,7 +6,6 @@ use Corals\Foundation\Transformers\BaseTransformer;
 use Corals\Modules\TroubleTicket\Models\Team;
 use Illuminate\Support\Str;
 
-
 class TeamTransformer extends BaseTransformer
 {
     public function __construct($extras = [])
@@ -27,19 +26,21 @@ class TeamTransformer extends BaseTransformer
 
         $team->users->each(function ($assignee) use (&$users) {
             $users[] = $assignee->assignee->full_name;
-
         });
 
         $transformedArray = [
             'id' => $team->id,
-            'name' => user() && user()->can('view', $team) ? sprintf('<a href="%s">%s</a>', $team->getShowURL(),
-                $team->name) : $team->name,
+            'name' => user() && user()->can('view', $team) ? sprintf(
+                '<a href="%s">%s</a>',
+                $team->getShowURL(),
+                $team->name
+            ) : $team->name,
             'email' => Str::limit($team->getProperty('notifications_channels.email')) ?? '-',
             'slack' => Str::limit($team->getProperty('notifications_channels.slack'), 50) ?? '-',
             'users' => formatArrayAsLabels($users, 'primary'),
             'created_at' => format_date($team->created_at),
             'updated_at' => format_date($team->updated_at),
-            'action' => $this->actions($team)
+            'action' => $this->actions($team),
         ];
 
         return parent::transformResponse($transformedArray);

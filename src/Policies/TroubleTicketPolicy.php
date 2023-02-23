@@ -20,8 +20,8 @@ class TroubleTicketPolicy extends BasePolicy
     public function view(User $user, TroubleTicket $troubleTicket = null)
     {
         $view = $user->can('TroubleTicket::troubleTicket.view');
-        
-        if ($troubleTicket && !$view) {
+
+        if ($troubleTicket && ! $view) {
             return $this->isOwner($user, $troubleTicket) && $user->can('TroubleTicket::troubleTicket.view_my_tickets');
         } else {
             return $view || $user->can('TroubleTicket::troubleTicket.view_my_tickets');
@@ -49,7 +49,7 @@ class TroubleTicketPolicy extends BasePolicy
      */
     public function partialUpdate(User $user, TroubleTicket $troubleTicket)
     {
-        return !in_array($troubleTicket->status, TroubleTicket::LOCKED_STATUSES)
+        return ! in_array($troubleTicket->status, TroubleTicket::LOCKED_STATUSES)
             && ($user->can('TroubleTicket::troubleTicket.update') || $user->can($this->administrationPermission));
     }
 
@@ -90,7 +90,7 @@ class TroubleTicketPolicy extends BasePolicy
             return false;
         }
 
-        return !in_array($troubleTicket->status, TroubleTicket::LOCKED_STATUSES)
+        return ! in_array($troubleTicket->status, TroubleTicket::LOCKED_STATUSES)
             && ($this->isOwner($user, $troubleTicket)
                 || $user->can('TroubleTicket::troubleTicket.update')
                 || $user->can($this->administrationPermission));
@@ -108,6 +108,6 @@ class TroubleTicketPolicy extends BasePolicy
 
     public function resolve(User $user, TroubleTicket $troubleTicket)
     {
-        return !in_array($troubleTicket->status, ['resolved']);
+        return ! in_array($troubleTicket->status, ['resolved']);
     }
 }

@@ -39,7 +39,7 @@ class TroubleTicketsDataTable extends BaseDataTable
     {
         $query = $model->newQuery();
 
-        if (!user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
+        if (! user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
             $query->where('owner_id', user()->id)->where('owner_type', getMorphAlias(User::class));
         }
 
@@ -94,7 +94,7 @@ class TroubleTicketsDataTable extends BaseDataTable
             'updated_at' => ['title' => trans('Corals::attributes.updated_at')],
         ];
 
-        if (!user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
+        if (! user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
             unset($columns['owner']);
         }
 
@@ -114,47 +114,47 @@ class TroubleTicketsDataTable extends BaseDataTable
                 'class' => 'col-md-2',
                 'type' => 'text',
                 'condition' => 'like',
-                'active' => true
+                'active' => true,
             ],
             'title' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.title'),
                 'class' => 'col-md-2',
                 'type' => 'text',
                 'condition' => 'like',
-                'active' => true
+                'active' => true,
             ],
             'status' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.status'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => ListOfValues::get('tt_status'),
-                'active' => true
+                'active' => true,
             ],
             'priority' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.priority'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => ListOfValues::get('tt_priority'),
-                'active' => true
+                'active' => true,
             ],
             'due_date' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.due_date'),
                 'class' => 'col-md-4',
                 'type' => 'date_range',
-                'active' => true
+                'active' => true,
             ],
             'closed_at' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.closed_at'),
                 'class' => 'col-md-4',
                 'type' => 'date_range',
-                'active' => true
+                'active' => true,
             ],
             'model_type' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.model_type'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => \Arr::pluck(get_models('trouble_ticket.models.troubleTicket.model_field_models'), 'label', 'model_class'),
-                'active' => true
+                'active' => true,
             ],
 
             'model_id' => [
@@ -163,7 +163,7 @@ class TroubleTicketsDataTable extends BaseDataTable
                 'type' => 'select2-ajax',
                 'model' => '',
                 'columns' => [],
-                'active' => true
+                'active' => true,
             ],
 
             'owner_id' => [
@@ -172,7 +172,7 @@ class TroubleTicketsDataTable extends BaseDataTable
                 'type' => 'select2-ajax',
                 'model' => User::class,
                 'columns' => ['email', 'name', 'last_name'],
-                'active' => true
+                'active' => true,
             ],
             'assignees.assignee_id' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.assignee_id'),
@@ -180,28 +180,28 @@ class TroubleTicketsDataTable extends BaseDataTable
                 'type' => 'select2-ajax',
                 'model' => User::class,
                 'columns' => ['email', 'name', 'last_name'],
-                'active' => true
+                'active' => true,
             ],
             'issue_type_id' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.issue_type'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => TroubleTickets::getIssuesList(),
-                'active' => true
+                'active' => true,
             ],
             'team_id' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.team'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => TroubleTickets::getTeamsList(),
-                'active' => true
+                'active' => true,
             ],
             'category_id' => [
                 'title' => trans('TroubleTicket::attributes.troubleTicket.category'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => \Category::getCategoriesByParent('tt-categories'),
-                'active' => true
+                'active' => true,
             ],
 //            'archived' => [
 //                'title' => trans('TroubleTicket::attributes.troubleTicket.archived'),
@@ -211,7 +211,7 @@ class TroubleTicketsDataTable extends BaseDataTable
 //            ],
         ];
 
-        if (!user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
+        if (! user()->hasPermissionTo('TroubleTicket::troubleTicket.view')) {
             $filters = Arr::except($filters, ['owner_id', 'owner_type', 'closed_at', 'due_date', 'team_id']);
         }
 
@@ -222,8 +222,10 @@ class TroubleTicketsDataTable extends BaseDataTable
     {
         return [
             'update_status' => [
-                'title' => sprintf('<i class="fa fa-edit fa-fw"></i> %s',
-                    __('TroubleTicket::labels.trouble_ticket.update_status')),
+                'title' => sprintf(
+                    '<i class="fa fa-edit fa-fw"></i> %s',
+                    __('TroubleTicket::labels.trouble_ticket.update_status')
+                ),
                 'permission' => 'TroubleTicket::troubleTicket.update',
                 'action' => 'modal-load',
                 'href' => url(config('trouble_ticket.models.troubleTicket.resource_url') . '/update-status-modal'),
@@ -251,6 +253,7 @@ class TroubleTicketsDataTable extends BaseDataTable
     protected function getOptions()
     {
         $url = url(config('trouble_ticket.models.troubleTicket.resource_url'));
+
         return ['resource_url' => $url];
     }
 }

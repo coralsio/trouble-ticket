@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Corals\Modules\TroubleTicket\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\PublicBaseController;
@@ -50,13 +49,15 @@ class PublicTroubleTicketsController extends PublicBaseController
         if (user()) {
             return redirect(config('trouble_ticket.models.troubleTicket.resource_url') . '/create');
         }
-        
+
         $troubleTicket = new TroubleTicket();
 
         view()->share([
             'resource_url' => $request->url(),
-            'title_singular' => trans('Corals::labels.create_title',
-                ['title' => trans('TroubleTicket::module.troubleTicket.title_singular')]),
+            'title_singular' => trans(
+                'Corals::labels.create_title',
+                ['title' => trans('TroubleTicket::module.troubleTicket.title_singular')]
+            ),
         ]);
 
         $seoItem = [
@@ -85,6 +86,7 @@ class PublicTroubleTicketsController extends PublicBaseController
             throw $exception;
         } catch (\Exception $exception) {
             log_exception($exception, TroubleTicket::class, 'doCreate');
+
             return response()->json(['level' => 'error', 'message' => $exception->getMessage(), 400]);
         }
     }

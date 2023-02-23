@@ -47,17 +47,17 @@ class TeamsDataTable extends BaseDataTable
             'users' => [
                 'title' => trans('TroubleTicket::attributes.team.users'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'email' => [
                 'title' => trans('TroubleTicket::attributes.team.email'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'slack' => [
                 'title' => trans('TroubleTicket::attributes.team.slack'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'created_at' => ['title' => trans('Corals::attributes.created_at')],
             'updated_at' => ['title' => trans('Corals::attributes.updated_at')],

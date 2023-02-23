@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\TroubleTicket\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 use Corals\Media\Traits\MediaControllerTrait;
 use Corals\Modules\TroubleTicket\Facades\TroubleTickets;
@@ -15,7 +14,8 @@ use Illuminate\Http\Request;
 
 class TroubleTicketService extends BaseServiceClass
 {
-    use ValidatesRequests, MediaControllerTrait;
+    use ValidatesRequests;
+    use MediaControllerTrait;
 
     protected $excludedRequestParams = [
         'attachments',
@@ -24,7 +24,7 @@ class TroubleTicketService extends BaseServiceClass
         'assignee_id',
         'is_public_owner',
         'public_owner',
-        'g-recaptcha-response'
+        'g-recaptcha-response',
     ];
 
     public function preStoreUpdate($request, &$additionalData)
@@ -42,12 +42,14 @@ class TroubleTicketService extends BaseServiceClass
     {
         $additionalData['code'] = TroubleTicket::getCode('TT', 'code');
 
-        if ($request->get('is_public_owner') || !user()) {
+        if ($request->get('is_public_owner') || ! user()) {
             if ($request->input('public_owner.email') && $request->input('public_owner.name')) {
-                $publicOwner = PublicOwner::query()->updateOrCreate(['email' => $request->input('public_owner.email')],
+                $publicOwner = PublicOwner::query()->updateOrCreate(
+                    ['email' => $request->input('public_owner.email')],
                     [
-                        'name' => $request->input('public_owner.name')
-                    ]);
+                        'name' => $request->input('public_owner.name'),
+                    ]
+                );
 
                 $additionalData['owner_type'] = getMorphAlias($publicOwner);
                 $additionalData['owner_id'] = $publicOwner->id;
@@ -60,7 +62,7 @@ class TroubleTicketService extends BaseServiceClass
             $additionalData['owner_type'] = getMorphAlias(User::class);
         }
 
-        if (!user() || user()->cannot('fullCreate', TroubleTicket::class)) {
+        if (! user() || user()->cannot('fullCreate', TroubleTicket::class)) {
             $additionalData['status'] = 'new';
 
             $request->request->add([
@@ -89,14 +91,14 @@ class TroubleTicketService extends BaseServiceClass
 
         $messages = [
             'public_owner.email.required_with' => trans('validation.required', [
-                'attribute' => trans('TroubleTicket::attributes.troubleTicket.public_owner.email')
+                'attribute' => trans('TroubleTicket::attributes.troubleTicket.public_owner.email'),
             ]),
             'public_owner.name.required_with' => trans('validation.required', [
-                'attribute' => trans('TroubleTicket::attributes.troubleTicket.public_owner.name')
+                'attribute' => trans('TroubleTicket::attributes.troubleTicket.public_owner.name'),
             ]),
         ];
 
-        if (!user()) {
+        if (! user()) {
             $rules['g-recaptcha-response'] = 'required|captcha';
         }
 
@@ -111,8 +113,10 @@ class TroubleTicketService extends BaseServiceClass
             ->where('description', 'created')->where('log_name', 'default')
             ->latest()->first();
 
-        $this->model->logActivity(trans('TroubleTicket::activities.tt_created', ['code' => $this->model->code]),
-            $latestActivityRecord->changes());
+        $this->model->logActivity(
+            trans('TroubleTicket::activities.tt_created', ['code' => $this->model->code]),
+            $latestActivityRecord->changes()
+        );
 
         TroubleTickets::handleAssignment($this->model, $assigneeId);
     }
@@ -133,12 +137,14 @@ class TroubleTicketService extends BaseServiceClass
 
         if ($latestActivityRecord) {
             $hasChanges = $latestActivityRecord->changes()->filter(function ($item) {
-                return !empty($item);
+                return ! empty($item);
             })->isNotEmpty();
 
             if ($hasChanges) {
-                $this->model->logActivity(trans('TroubleTicket::activities.tt_updated', ['code' => $this->model->code]),
-                    $latestActivityRecord->changes());
+                $this->model->logActivity(
+                    trans('TroubleTicket::activities.tt_updated', ['code' => $this->model->code]),
+                    $latestActivityRecord->changes()
+                );
             }
         }
     }
@@ -169,13 +175,17 @@ class TroubleTicketService extends BaseServiceClass
 
             $causer = user() ?: $troubleTicket->owner;
 
-            $troubleTicket->logActivity(trans('TroubleTicket::activities.tt_attachment',
-                ['causer' => $causer->getIdentifier(), 'files' => join(', ', $fileNames)]));
+            $troubleTicket->logActivity(trans(
+                'TroubleTicket::activities.tt_attachment',
+                ['causer' => $causer->getIdentifier(), 'files' => join(', ', $fileNames)]
+            ));
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.created',
-                    ['item' => trans('TroubleTicket::labels.trouble_ticket.attachment')]),
+                'message' => trans(
+                    'Corals::messages.success.created',
+                    ['item' => trans('TroubleTicket::labels.trouble_ticket.attachment')]
+                ),
                 'action' => 'site_reload',
             ];
         } catch (\Exception $exception) {

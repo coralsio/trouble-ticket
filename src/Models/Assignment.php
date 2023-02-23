@@ -10,7 +10,9 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Assignment extends BaseModel
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
 
     /**
      *  Model configuration.

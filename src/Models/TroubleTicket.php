@@ -7,8 +7,8 @@ use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Traits\ModelPropertiesTrait;
 use Corals\Foundation\Traits\ModelUniqueCode;
 use Corals\Foundation\Transformers\PresentableTrait;
-use Corals\Modules\Utility\Models\Category\Category;
 use Corals\Modules\Utility\Comment\Traits\ModelHasComments;
+use Corals\Modules\Utility\Models\Category\Category;
 use Corals\User\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
@@ -18,11 +18,14 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class TroubleTicket extends BaseModel implements HasMedia
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait,
-        ModelUniqueCode, ModelHasComments,
-        InteractsWithMedia;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
+    use ModelUniqueCode;
+    use ModelHasComments;
+    use InteractsWithMedia;
 
-    const LOCKED_STATUSES = ['closed', 'resolved'];
+    public const LOCKED_STATUSES = ['closed', 'resolved'];
     /**
      *  Model configuration.
      * @var string
@@ -138,7 +141,7 @@ class TroubleTicket extends BaseModel implements HasMedia
         foreach ($result['attributes'] ?? [] as $key => $item) {
             $oldValue = Arr::get($result, "old.$key.value");
 
-            if (!empty($oldValue)) {
+            if (! empty($oldValue)) {
                 $item['old_value'] = $oldValue;
             }
 

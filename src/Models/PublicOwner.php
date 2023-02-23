@@ -10,7 +10,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class PublicOwner extends BaseModel
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait, Notifiable;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
+    use Notifiable;
 
     /**
      *  Model configuration.
@@ -40,6 +43,7 @@ class PublicOwner extends BaseModel
     {
         $id = $this->attributes['id'] ?? 1;
         $avatar = 'avatar_' . ($id % 10) . '.png';
+
         return asset(config('user.models.user.default_picture') . $avatar);
     }
 }

@@ -79,7 +79,7 @@ class IssueTypeRequest extends BaseRequest
 
             $this->getInputSource()->replace($data);
         }
-        
+
         return parent::getValidatorInstance();
     }
 }

@@ -10,7 +10,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class IssueType extends BaseModel
 {
-    use PresentableTrait, LogsActivity, ModelPropertiesTrait, ModelHasCategory;
+    use PresentableTrait;
+    use LogsActivity;
+    use ModelPropertiesTrait;
+    use ModelHasCategory;
 
     /**
      *  Model configuration.

@@ -6,7 +6,6 @@ use Corals\Foundation\Contracts\CoralsScope;
 
 class MarketPlaceProductsScope implements CoralsScope
 {
-
     public function apply($builder, $extras = [])
     {
         if (user() && user()->hasPermissionTo('Administrations::admin.marketplace')) {

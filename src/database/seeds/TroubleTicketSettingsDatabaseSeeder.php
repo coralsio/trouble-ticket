@@ -4,8 +4,8 @@ namespace Corals\Modules\TroubleTicket\database\seeds;
 
 use Corals\Modules\TroubleTicket\Models\IssueType;
 use Corals\Modules\TroubleTicket\Models\Team;
-use Corals\Modules\Utility\ListOfValue\Facades\ListOfValues;
 use Corals\Modules\Utility\Category\Models\Category;
+use Corals\Modules\Utility\ListOfValue\Facades\ListOfValues;
 use Corals\Modules\Utility\ListOfValue\Models\ListOfValue;
 use Corals\User\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,30 +29,30 @@ class TroubleTicketSettingsDatabaseSeeder extends Seeder
             'new' => [
                 'label' => 'New',
                 'properties' => [
-                    'color' => 'info'
-                ]
+                    'color' => 'info',
+                ],
             ],
             'open' => [
                 'label' => 'Open',
                 'properties' => [
-                    'color' => 'warning'
-                ]
+                    'color' => 'warning',
+                ],
             ],
             'in_progress' => [
                 'label' => 'In Progress',
                 'properties' => [
-                    'color' => 'primary'
-                ]
+                    'color' => 'primary',
+                ],
             ],
             'resolved' => [
                 'label' => 'Resolved',
                 'properties' => [
-                    'color' => 'success'
-                ]
+                    'color' => 'success',
+                ],
             ],
             'closed' => [
                 'label' => 'Closed',
-            ]
+            ],
         ];
 
         ListOfValues::insertListOfValuesChildren($ttStatusParent, $ttStatusOptions);
@@ -66,20 +66,20 @@ class TroubleTicketSettingsDatabaseSeeder extends Seeder
             'low' => [
                 'label' => 'Low',
                 'properties' => [
-                    'color' => 'info'
-                ]
+                    'color' => 'info',
+                ],
             ],
             'medium' => [
                 'label' => 'Medium',
                 'properties' => [
-                    'color' => 'warning'
-                ]
+                    'color' => 'warning',
+                ],
             ],
             'urgent' => [
                 'label' => 'Urgent',
                 'properties' => [
-                    'color' => 'danger'
-                ]
+                    'color' => 'danger',
+                ],
             ],
         ];
 
@@ -116,7 +116,7 @@ class TroubleTicketSettingsDatabaseSeeder extends Seeder
 
         $team->users()->create([
             'assignee_id' => $user->id,
-            'assignee_type' => getModelMorphMap(User::class)
+            'assignee_type' => getModelMorphMap(User::class),
         ]);
 
         $issueType = IssueType::query()->create([
@@ -128,9 +128,9 @@ class TroubleTicketSettingsDatabaseSeeder extends Seeder
                 [
                     'title' => 'Second solution',
                     'order' => 2,
-                    'details' => 'Try this when first solution didn\'t work'
+                    'details' => 'Try this when first solution didn\'t work',
                 ],
-            ]
+            ],
         ]);
 
         $categories = $sampleCategoriesObjects->pluck('id')->toArray();

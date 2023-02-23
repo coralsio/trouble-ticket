@@ -58,7 +58,6 @@ class TeamsTest extends TestCase
         $this->assertTrue(true);
     }
 
-
     public function test_teams_edit()
     {
         $this->test_teams_store();

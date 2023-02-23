@@ -49,7 +49,7 @@ class TeamsController extends BaseController
         $team = new Team();
 
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular])
+            'title_singular' => trans('Corals::labels.create_title', ['title' => $this->title_singular]),
         ]);
 
         return view('TroubleTicket::teams.create_edit')->with(compact('team'));
@@ -99,7 +99,7 @@ class TeamsController extends BaseController
     public function edit(TeamRequest $request, Team $team)
     {
         $this->setViewSharedData([
-            'title_singular' => trans('Corals::labels.update_title', ['title' => $team->name])
+            'title_singular' => trans('Corals::labels.update_title', ['title' => $team->name]),
         ]);
 
         return view('TroubleTicket::teams.create_edit')->with(compact('team'));
@@ -130,7 +130,7 @@ class TeamsController extends BaseController
 
             $message = [
                 'level' => 'success',
-                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular])
+                'message' => trans('Corals::messages.success.deleted', ['item' => $this->title_singular]),
             ];
         } catch (\Exception $exception) {
             log_exception($exception, TeamsController::class, 'destroy');
@@ -162,7 +162,7 @@ class TeamsController extends BaseController
     {
         $issueTypeId = $request->get('issue_type_id');
 
-        if (!$issueTypeId) {
+        if (! $issueTypeId) {
             return [];
         }
 

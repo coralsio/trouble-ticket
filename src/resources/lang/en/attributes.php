@@ -27,13 +27,13 @@ return [
         ],
         'category' => 'Category',
         'issue_type' => 'Issue Type',
-        'team' => 'Team'
+        'team' => 'Team',
     ],
     'team' => [
         'name' => 'Name',
         'email' => 'Email',
         'slack' => 'Slack',
-        'users' => 'Users'
+        'users' => 'Users',
     ],
     'issue_type' => [
         'title' => 'Title',
@@ -43,7 +43,7 @@ return [
         'solutions' => [
             'title' => 'Title',
             'order' => 'Order',
-            'details' => 'Details'
-        ]
-    ]
+            'details' => 'Details',
+        ],
+    ],
 ];

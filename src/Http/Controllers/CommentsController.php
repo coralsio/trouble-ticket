@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Corals\Modules\TroubleTicket\Http\Controllers;
-
 
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
 use Corals\Modules\Utility\Comment\Http\Controllers\CommentBaseController;
@@ -33,7 +31,7 @@ class CommentsController extends CommentBaseController
      */
     public function ttComments(Request $request, TroubleTicket $troubleTicket)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         return view('TroubleTicket::troubleTickets.partials.tt_comments')
             ->with(compact('troubleTicket'));
@@ -47,11 +45,11 @@ class CommentsController extends CommentBaseController
 
         $commentable = $this->commentableClass::findByHash($commentable_hashed_id);
 
-        if (!$commentable) {
+        if (! $commentable) {
             abort(404, 'Not Found!!');
         }
 
-        if (!user()) {
+        if (! user()) {
             abort_if(in_array($commentable->status, TroubleTicket::LOCKED_STATUSES), 403, 'Forbidden');
 
             $this->author = $commentable->owner;
@@ -61,8 +59,10 @@ class CommentsController extends CommentBaseController
 
         $response = $this->doCreate($request, $commentable_hashed_id);
 
-        $commentable->logActivity(trans('TroubleTicket::activities.tt_commented',
-            ['author' => $this->author->getIdentifier()]));
+        $commentable->logActivity(trans(
+            'TroubleTicket::activities.tt_commented',
+            ['author' => $this->author->getIdentifier()]
+        ));
 
         return $response;
     }
