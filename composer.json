@@ -28,10 +28,6 @@
         "laravel/pint": "^1.0"
     },
     "require": {
-        "corals/utility-comment": "@dev",
-        "corals/utility-lov":"@dev",
-        "corals/utility-category":"@dev",
-        "corals/cms":"@dev"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
