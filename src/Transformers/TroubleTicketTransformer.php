@@ -4,7 +4,7 @@ namespace Corals\Modules\TroubleTicket\Transformers;
 
 use Corals\Foundation\Transformers\BaseTransformer;
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
-use Corals\Modules\Utility\ListOfValue\Facades\ListOfValues;
+use Corals\Utility\ListOfValue\Facades\ListOfValues;
 
 class TroubleTicketTransformer extends BaseTransformer
 {

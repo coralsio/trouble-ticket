@@ -3,8 +3,8 @@
 namespace Corals\Modules\TroubleTicket\Http\Controllers;
 
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
-use Corals\Modules\Utility\Comment\Http\Controllers\CommentBaseController;
-use Corals\Modules\Utility\Comment\Services\CommentService;
+use Corals\Utility\Comment\Http\Controllers\CommentBaseController;
+use Corals\Utility\Comment\Services\CommentService;
 use Illuminate\Http\Request;
 
 class CommentsController extends CommentBaseController

@@ -6,7 +6,7 @@
 
             {!! CoralsForm::textarea('body','Utility::attributes.comments.body', true, null, []) !!}
 
-            @if(user() && user()->can('seePrivateComments', \Corals\Modules\Utility\Models\Comment\Comment::class))
+            @if(user() && user()->can('seePrivateComments', \Corals\Utility\Models\Comment\Comment::class))
                 {!! CoralsForm::checkbox('is_private','Utility::attributes.comments.is_private',false,1) !!}
             @endif
 

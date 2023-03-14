@@ -4,8 +4,8 @@ namespace Tests\Feature;
 
 use Corals\Modules\TroubleTicket\Models\IssueType;
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
-use Corals\Modules\Utility\Category\Facades\Category;
-use Corals\Modules\Utility\ListOfValue\Facades\ListOfValues;
+use Corals\Utility\Category\Facades\Category;
+use Corals\Utility\ListOfValue\Facades\ListOfValues;
 use Corals\User\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;

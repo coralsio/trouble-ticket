@@ -5,7 +5,7 @@ namespace Corals\Modules\TroubleTicket\Models;
 use Corals\Foundation\Models\BaseModel;
 use Corals\Foundation\Traits\ModelPropertiesTrait;
 use Corals\Foundation\Transformers\PresentableTrait;
-use Corals\Modules\Utility\Category\Traits\ModelHasCategory;
+use Corals\Utility\Category\Traits\ModelHasCategory;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class IssueType extends BaseModel

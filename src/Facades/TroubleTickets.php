@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class TroubleTickets
- * @package Corals\Modules\Utility\Facades\TroubleTicket
+ * @package Corals\Utility\Facades\TroubleTicket
  * @method static autoAssignment(TroubleTicket $troubleTicket)
  * @method static handleAssignment(TroubleTicket $troubleTicket, $assigneeId = null)
  * @method static getBestAssignee(TroubleTicket $troubleTicket)
