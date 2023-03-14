@@ -4,10 +4,10 @@ namespace Corals\Modules\TroubleTicket\database\seeds;
 
 use Corals\Modules\TroubleTicket\Models\IssueType;
 use Corals\Modules\TroubleTicket\Models\Team;
+use Corals\User\Models\User;
 use Corals\Utility\Category\Models\Category;
 use Corals\Utility\ListOfValue\Facades\ListOfValues;
 use Corals\Utility\ListOfValue\Models\ListOfValue;
-use Corals\User\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 

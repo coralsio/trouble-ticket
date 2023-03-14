@@ -6,8 +6,8 @@ use Corals\Foundation\DataTables\BaseDataTable;
 use Corals\Modules\TroubleTicket\Facades\TroubleTickets;
 use Corals\Modules\TroubleTicket\Models\TroubleTicket;
 use Corals\Modules\TroubleTicket\Transformers\TroubleTicketTransformer;
-use Corals\Utility\ListOfValue\Facades\ListOfValues;
 use Corals\User\Models\User;
+use Corals\Utility\ListOfValue\Facades\ListOfValues;
 use Illuminate\Support\Arr;
 use Yajra\DataTables\EloquentDataTable;
 

@@ -3,11 +3,11 @@
 namespace Corals\Modules\TroubleTicket\database\seeds;
 
 use Corals\Menu\Models\Menu;
-use Corals\Utility\Category\Models\Category;
-use Corals\Utility\ListOfValue\Models\ListOfValue;
 use Corals\Settings\Models\Setting;
 use Corals\User\Communication\Models\NotificationTemplate;
 use Corals\User\Models\Permission;
+use Corals\Utility\Category\Models\Category;
+use Corals\Utility\ListOfValue\Models\ListOfValue;
 use Illuminate\Database\Seeder;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 

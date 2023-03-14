@@ -13,10 +13,10 @@ use Corals\Modules\TroubleTicket\Notifications\TTStatusChangedNotification;
 use Corals\Modules\TroubleTicket\Providers\TroubleTicketAuthServiceProvider;
 use Corals\Modules\TroubleTicket\Providers\TroubleTicketObserverServiceProvider;
 use Corals\Modules\TroubleTicket\Providers\TroubleTicketRouteServiceProvider;
-use Corals\Utility\Facades\Utility;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Corals\User\Communication\Facades\CoralsNotification;
+use Corals\Utility\Facades\Utility;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Foundation\AliasLoader;
 
