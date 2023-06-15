@@ -4,10 +4,10 @@
             <h4>@lang('TroubleTicket::labels.comment.add_new_comment')</h4>
             {!! CoralsForm::openForm(null,['url'=>"trouble-ticket/trouble-tickets/$troubleTicket->hashed_id/create-comment",'data-page_action'=>'loadComments']) !!}
 
-            {!! CoralsForm::textarea('body','Utility::attributes.comments.body', true, null, []) !!}
+            {!! CoralsForm::textarea('body','utility-comment::attributes.comments.body', true, null, []) !!}
 
-            @if(user() && user()->can('seePrivateComments', \Corals\Utility\Models\Comment\Comment::class))
-                {!! CoralsForm::checkbox('is_private','Utility::attributes.comments.is_private',false,1) !!}
+            @if(user() && user()->can('seePrivateComments', \Corals\Utility\Comment\Models\Comment::class))
+                {!! CoralsForm::checkbox('is_private','utility-comment::attributes.comments.is_private',false,1) !!}
             @endif
 
             {!! CoralsForm::formButtons('Corals::labels.submit', [], ['show_cancel'=>false]) !!}

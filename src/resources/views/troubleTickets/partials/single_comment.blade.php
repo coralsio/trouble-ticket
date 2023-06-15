@@ -18,7 +18,7 @@
             @if($comment->is_private)
                 <li class="list-inline-item">
                     <small>
-                        <i class="fa fa-lock fa-fw"></i> @lang('Utility::attributes.comments.private')
+                        <i class="fa fa-lock fa-fw"></i> @lang('utility-comment::attributes.comments.private')
                     </small>
                 </li>
             @endif

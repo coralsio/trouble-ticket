@@ -9,7 +9,7 @@ use Corals\Foundation\Traits\ModelUniqueCode;
 use Corals\Foundation\Transformers\PresentableTrait;
 use Corals\User\Models\User;
 use Corals\Utility\Comment\Traits\ModelHasComments;
-use Corals\Utility\Models\Category\Category;
+use Corals\Utility\Category\Models\Category;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Arr;
 use Spatie\Activitylog\Traits\LogsActivity;
