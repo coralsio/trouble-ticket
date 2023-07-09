@@ -12,11 +12,11 @@ class MarketPlaceProductsScope implements CoralsScope
             return;
         }
 
-//        if (user() && user()->hasRole('vendor')) {
-//            $store = Store::getVendorStore();
-//            $builder->where('store_id', optional($store)->id);
-//            return;
-//        }
+        //        if (user() && user()->hasRole('vendor')) {
+        //            $store = Store::getVendorStore();
+        //            $builder->where('store_id', optional($store)->id);
+        //            return;
+        //        }
 
         $builder->where('status', 'active');
     }
