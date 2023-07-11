@@ -12,12 +12,13 @@ Once you install the module the following items need to be configured.
 
 3. Linking Current Models (Optional)
 
+<p>&nbsp;</p>
 <p><img src="https://www.laraship.com/wp-content/uploads/2020/08/laravel-trouble-ticket-module-1024x553.png" alt=""></p>
 
 ### Articles
 - [Team Setup](#team-setup)
 
-- [Tickets (Issue) Types](#tickets-(Issue)-types)
+- [Tickets (Issue) Types](#tickets-issue-types)
 
 - [Linking with existing Models](#linking-with-existing-models)
 
@@ -50,7 +51,7 @@ Teams are basically a set of users specialized in following up trouble tickets, 
 Trouble Tickets can be manually assigned or automatically assigned, admin can assign tickets or tickets can be reassigned to another team member during the ticketing cycle.
 
 The automatic assignment is based on the minimum load score, basically, who have the least tickets opened.
-
+<p>&nbsp;</p>
 
 ## Tickets (Issue) Types
 Issue types help the support team to decide whom this ticket should be assigned to, and they route the ticket to the related team.
@@ -64,7 +65,7 @@ The technical team will handle support issues like login errors, errors on the a
 Also, you can define multiple possible solutions to issues, for example, if someone cannot log in to his account you can suggest him to reset his password or to check junk folder, …
 
 <p><img src="https://www.laraship.com/wp-content/uploads/2020/08/laravel-support-issue-type-management-1024x312.png" alt=""></p>
-
+<p>&nbsp;</p>
 
 ## Linking with existing Models
 Tickets can be associated with models within Laraship, for example, a user wants to raise a support ticket about a specific subscription, or he has an issue with a specific order, in this case, you can have a dropdown on ticket creation to select the order or the subscription he is referring to
