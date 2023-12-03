@@ -28,10 +28,10 @@
         "laravel/pint": "^1.0"
     },
     "require": {
-        "corals/utility-comment": "^1.0",
-        "corals/utility-lov":"^1.0",
-        "corals/utility-category":"^1.0",
-        "corals/cms":"^1.0"
+        "corals/utility-comment": "^10.0.0",
+        "corals/utility-lov":"^10.0.0",
+        "corals/utility-category":"^10.0.0",
+        "corals/cms":"^10.0.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
